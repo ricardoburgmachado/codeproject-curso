@@ -51,7 +51,17 @@ class ProjectController extends Controller{
 
 
     public function show($id){
+
+
         //return \CodeProject\Entities\Client::find($id);
+
+        $userId = 11;
+
+        /* Isso aqui foi transferido para o middleware CheckProjectOwner
+         * if( $this->repository->isOwner($id, $userId) == false){
+            return ['success'=> false];
+        }
+        */
         return $this->repository->find($id);
     }
 

@@ -32,20 +32,28 @@ Route::get('client/{id}', 'ClientController@show');
 Route::delete('client/{id}', 'ClientController@destroy');
 
 
+Route::group(['middleware' => 'CheckProjectOwner'], function (){
 
-Route::get('project/{id}/note', 'ProjectController@index');
+    Route::get('project', 'ProjectController@index');
+    Route::post('project', 'ProjectController@store');
+    Route::get('project/{id}', 'ProjectController@show');
+    Route::delete('project/{id}', 'ProjectController@destroy');
+    
 
-Route::post('project/{id}/note/note', 'ProjectController@store');
+    Route::get('project/{id}/note', 'ProjectController@index');
 
-Route::get('project/{id}/note/{noteId}', 'ProjectController@show');
+    Route::post('project/{id}/note/note', 'ProjectController@store');
 
-Route::put('project/{id}/note/{noteId}', 'ProjectController@update');
+    Route::get('project/{id}/note/{noteId}', 'ProjectController@show');
 
-Route::delete('project/{id}/note/{noteId}', 'ProjectController@destroy');
+    Route::put('project/{id}/note/{noteId}', 'ProjectController@update');
 
-Route::get('project', 'ProjectController@index');
-Route::post('project', 'ProjectController@store');
-Route::get('project/{id}', 'ProjectController@show');
-Route::delete('project/{id}', 'ProjectController@destroy');
+    Route::delete('project/{id}/note/{noteId}', 'ProjectController@destroy');
+
+
+});
+
+
+
 
 
