@@ -9,7 +9,21 @@
 namespace CodeProject\OAuth;
 
 
-class Verifier
-{
+
+class Verifier {
+
+    public function ferify($username, $password){
+
+        $credentials= [
+            'email'=> $username,
+            'password'=>$password
+        ];
+
+        if(Auth::once($credentials)){
+            return Auth::user()->id;
+        }
+
+        return false;
+    }
 
 }

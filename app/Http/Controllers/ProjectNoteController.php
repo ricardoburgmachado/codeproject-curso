@@ -4,40 +4,41 @@ namespace CodeProject\Http\Controllers;
 
 
 
-use CodeProject\Repositories\ProjectRepository;
-use CodeProject\Services\ProjectService;
+use CodeProject\Repositories\ProjectNoteRepository;
+use CodeProject\Services\ProjectNoteService;
 use Illuminate\Http\Request;
 
 
 
 
-class ProjectController extends Controller{
+class ProjectNoteController extends Controller{
 
 
     /**
-     * @var ProjectService
+     * @var ProjectNoteService
      */
     private $service;
 
     /**
-     * @var ProjectRepository
+     * @var ProjectNoteRepository
      */
     private $repository;
 
-    public function __construct(ProjectRepository $repository, ProjectService $service){
+    public function __construct(ProjectNoteRepository $repository, ProjectNoteService $service){
         $this->repository = $repository;
         $this->service= $service;
     }
 
-    public function index(){
+    public function index($id){
 
         //return \CodeProject\Entities\Client::all();
-        return $this->repository->all();
+        //return $this->repository->all();
+        return $this->repository->findWhere(['project_id'=>$id]);
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id, $noteId){
 
-        return $this->service->update($request->all(), $id);
+        return $this->service->update($request->all(), $noteId);
     }
 
 
@@ -50,14 +51,15 @@ class ProjectController extends Controller{
     }
 
 
-    public function show($id){
+    public function show($id, $noteId){
         //return \CodeProject\Entities\Client::find($id);
-        return $this->repository->find($id);
+        //return $this->repository->find($id);
+        return $this->repository->findWhere(['project_id'=>$id, 'id'=>$noteId]);
     }
 
 
-    public function destroy($id){
+    public function destroy($id, $noteId){
         //\CodeProject\Entities\Client::find($id)->delete();
-        return $this->repository->delete($id);
+        return $this->repository->delete($noteId);
     }
 }

@@ -14,3 +14,38 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::post('oauth/access_token', function (){
+
+    return \Illuminate\Support\Facades\Response::json(\LucaDegasperi\OAuth2Server\Facades\Authorizer::issueAccessToken());
+});
+
+
+
+Route::get('client', 'ClientController@index');
+
+Route::post('client', 'ClientController@store');
+
+Route::get('client/{id}', 'ClientController@show');
+
+Route::delete('client/{id}', 'ClientController@destroy');
+
+
+
+Route::get('project/{id}/note', 'ProjectController@index');
+
+Route::post('project/{id}/note/note', 'ProjectController@store');
+
+Route::get('project/{id}/note/{noteId}', 'ProjectController@show');
+
+Route::put('project/{id}/note/{noteId}', 'ProjectController@update');
+
+Route::delete('project/{id}/note/{noteId}', 'ProjectController@destroy');
+
+Route::get('project', 'ProjectController@index');
+Route::post('project', 'ProjectController@store');
+Route::get('project/{id}', 'ProjectController@show');
+Route::delete('project/{id}', 'ProjectController@destroy');
+
+

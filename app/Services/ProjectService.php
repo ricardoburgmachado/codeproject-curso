@@ -9,24 +9,25 @@
 
 namespace CodeProject\Services;
 
-use CodeProject\Repositories\ClientRepository;
-use CodeProject\Validators\ClientValidator;
+
+use CodeProject\Repositories\ProjectRepository;
+use CodeProject\Validators\ProjectValidator;
 use Prettus\Validator\Exceptions\ValidatorException;
 
-class ClientService {
+class ProjectService {
 
 
     /**
-     * @var ClientValidator
+     * @var ProjectValidatorValidator
      */
     protected $validator;
 
     /**
-     * @var ClientRepository
+     * @var ProjectRepositoryRepository
      */
     protected $repository;
 
-    public function __construct(ClientRepository $repository, ClientValidator $validator){
+    public function __construct(ProjectRepository $repository, ProjectValidator $validator){
 
         $this->validator = $validator;
         $this->repository = $repository;
@@ -59,8 +60,8 @@ class ClientService {
                 'message'=> $e->getMessageBag()
             ];
         }
-
     }
+     
 
 
 

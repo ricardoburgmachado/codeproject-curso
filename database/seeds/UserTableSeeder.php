@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class ClientTableSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,9 +12,20 @@ class ClientTableSeeder extends Seeder
     public function run(){
 
 
-        \CodeProject\Entities\Project::truncate();//apaga os registros
+        //\CodeProject\Entities\User::truncate();//apaga os registros
 
-        factory(\CodeProject\Entities\Project::class, 10)->create();
+        /*
+        factory(\CodeProject\Entities\User::class)->create([
+            'name' => 'ricardo',
+            'email' => 'ricardoburgmachado@gmail.com',
+            'password' => bcrypt(123456),
+            'remember_token' => str_random(10),
+        ]);
+        */
+
+
+
+        factory(\CodeProject\Entities\User::class, 10)->create();
 
     }
 }
