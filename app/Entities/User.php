@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace CodeProject\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
