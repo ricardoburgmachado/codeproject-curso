@@ -32,7 +32,12 @@ class ProjectController extends Controller{
     public function index(){
 
         //return \CodeProject\Entities\Client::all();
-        return $this->repository->all();
+
+        //return $this->repository->all();//traz todos
+
+        $userId = 11;
+
+        return $this->repository->findWhere(['owner_id' => $userId]);
     }
 
     public function update(Request $request, $id){
@@ -62,7 +67,13 @@ class ProjectController extends Controller{
             return ['success'=> false];
         }
         */
-        return $this->repository->find($id);
+        if($this->checkProjectOwner($id) == false){
+            return ['error'=> 'Access Forbidden'];
+        }else{
+            return $this->repository->find($id);
+        }
+
+
     }
 
 
@@ -70,4 +81,14 @@ class ProjectController extends Controller{
         //\CodeProject\Entities\Client::find($id)->delete();
         return $this->repository->delete($id);
     }
+
+    private function checkProjectOwner($projectId){
+
+         $userId = 11;
+
+         return $this->repository->isOwner($projectId, $userId);
+    }
+
+
+
 }
