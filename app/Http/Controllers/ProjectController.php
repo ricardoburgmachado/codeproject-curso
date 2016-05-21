@@ -90,5 +90,39 @@ class ProjectController extends Controller{
     }
 
 
+    private function checkProjectMember($projectId){
+
+        $userId = 11;
+
+        return $this->repository->hasMember($projectId, $userId);
+    }
+
+
+    private function checkProjectPermissions($projectId){
+
+
+
+        if($this->checkProjectOwner($projectId) or $this->checkProjectMember($projectId)){
+            return true;
+        }
+            return false;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
