@@ -2,11 +2,14 @@
 
 namespace CodeProject\Repositories;
 
+use CodeProject\Presenters\ProjectPresenter;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeProject\Repositories\ProjectRepository;
 use CodeProject\Entities\Project;
 use CodeProject\Validators\ProjectValidator;
+
+
 
 /**
  * Class ProjectRepositoryEloquent
@@ -61,24 +64,10 @@ class ProjectRepositoryEloquent extends BaseRepository implements ProjectReposit
         return false;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public function presenter()
+    {
+        return ProjectPresenter::class;
+    }
 
 
 }

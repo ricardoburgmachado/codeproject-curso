@@ -14,7 +14,9 @@ use League\Fractal\TransformerAbstract;
 
 class ProjectTransformer extends TransformerAbstract {
 
-    public function tranform(Project $project){
+    
+    
+    public function transform(Project $project){
 
         return [
             'project_id'=> $project->id,
