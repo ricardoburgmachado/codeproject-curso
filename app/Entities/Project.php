@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
+use CodeProject\Entities\ProjectFile;
+
 class Project extends Model implements Transformable
 {
     use TransformableTrait;
@@ -31,5 +33,11 @@ class Project extends Model implements Transformable
     public function members(){
         return $this->belongsToMany(User::class, 'project_members', 'project_id', 'member_id');
     }
+
+
+    public function files(){
+        return $this->hasMany(ProjectFile::class);
+    }
+
 
 }
