@@ -40,6 +40,16 @@ Route::delete('client/{id}', 'ClientController@destroy');
     Route::delete('project/{id}', 'ProjectController@destroy');
 
 
+    //Route::post('project/{id}/file', 'ProjectFileController@store');
+
+Route::post('project_file_send', 'ProjectFileController@store');
+
+
+    Route::get('send_file_test', function (){
+        return view('send_file');
+    });
+
+
     Route::get('project/{id}/note', 'ProjectController@index');
 
     Route::post('project/{id}/note/note', 'ProjectController@store');
