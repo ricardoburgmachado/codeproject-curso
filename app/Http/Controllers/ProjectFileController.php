@@ -51,12 +51,21 @@ class ProjectFileController extends Controller{
 
     public function store(Request $request){
 
-        $file = $request->file('file');
+        $file = $request->file('arquivo');
         $extension =  $file->getClientOriginalExtension();
+        //Storage::put($request->name.'.'.$extension, File::get($file));
 
+        $data['file']= $file;
+        $data['extension']= $extension;
+        $data['name']= $request->name;
+        $data['project_id']= $request->project_id;
+        $data['description']= $request->description;
+
+        $this->service->createFile($data);
+
+
+        //dd($file);
         //echo $request->name;
-
-        Storage::put($request->name.'.'.$extension, File::get($file));
     }
 
 /*

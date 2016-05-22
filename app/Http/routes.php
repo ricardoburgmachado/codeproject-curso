@@ -42,7 +42,9 @@ Route::delete('client/{id}', 'ClientController@destroy');
 
     //Route::post('project/{id}/file', 'ProjectFileController@store');
 
-Route::post('project_file_send', 'ProjectFileController@store');
+    Route::Post('project_file_send', ['as'=>'project_file_send', 'uses'=>'ProjectFileController@store']);
+
+
 
 
     Route::get('send_file_test', function (){
